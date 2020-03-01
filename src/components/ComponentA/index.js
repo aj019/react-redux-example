@@ -4,10 +4,11 @@ import {add} from '../../actions'
 
 class ComponentA extends Component {
   render() {
+    console.log(this.props)
     return (
       <div>
-        <p>The value is 0</p>
-        <button>Add</button>
+        <p>The value is {this.props.data1}</p>
+        <button onClick={() => this.props.addOne()}>Add</button>
       </div>
     )
   }
@@ -23,7 +24,7 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addOne: dispatch(add())
+    addOne: () => dispatch(add())
   }
 }
 
