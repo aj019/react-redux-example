@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {add} from '../../actions'
 
 class ComponentA extends Component {
   render() {
@@ -12,4 +13,21 @@ class ComponentA extends Component {
   }
 }
 
-export default connect()(ComponentA)
+const mapStateToProps = store => {
+  const {reducer1} = store
+  const {data1} = reducer1
+  return {
+    data1
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addOne: dispatch(add())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComponentA)
